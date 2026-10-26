@@ -1,0 +1,24 @@
+#!/bin/bash
+# Adapt TanStack ai-sandbox-docker 1.0.0 to the installed Docker sbx CLI.
+set -euo pipefail
+binary="${SBX_REAL_BINARY:-$(command -v sbx || true)}"
+if [[ -z "$binary" ]]; then
+  echo 'Docker sbx is missing. Install Docker Sandboxes and run sbx login.' >&2
+  exit 127
+fi
+args=()
+create_help=''
+if [[ "${1:-}" == 'create' ]]; then
+  create_help="$("$binary" create --help)"
+fi
+for arg in "$@"; do
+  if [[ "$arg" == '--quiet' && "${1:-}" == 'create' && "$create_help" != *'--quiet'* ]]; then
+    args+=('--no-progress')
+  else
+    args+=("$arg")
+  fi
+done
+if [[ "${1:-}" == 'create' ]]; then
+  args+=('--pull' "${SBX_PULL_POLICY:-never}")
+fi
+exec "$binary" "${args[@]}"

@@ -1,0 +1,19 @@
+{
+  "name": "tanstack-docker-sandbox-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "node demo.mjs",
+    "demo:live": "node demo.mjs --hold",
+    "check": "node --check demo.mjs && node --check fixture/report.cjs && bash -n sbx-compat"
+  },
+  "dependencies": {
+    "@tanstack/ai-sandbox-docker": "1.0.0",
+    "@tanstack/ai-sandbox": "1.0.0"
+  },
+  "version": "1.0.0",
+  "description": "Run JavaScript and generate Excel reports in a Docker microVM through TanStack AI sbxSandbox.",
+  "engines": {
+    "node": ">=22"
+  }
+}

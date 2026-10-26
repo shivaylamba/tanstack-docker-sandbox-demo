@@ -1,0 +1,23 @@
+{
+  "runtime": "v22.22.1",
+  "platform": "linux",
+  "customersCompared": 4,
+  "dropped": [
+    {
+      "name": "Acme",
+      "previous": 12000,
+      "current": 8000,
+      "change": -4000
+    },
+    {
+      "name": "Cedar",
+      "previous": 5000,
+      "current": 3000,
+      "change": -2000
+    }
+  ],
+  "artifacts": [
+    "sales-report.xlsx",
+    "spending-drop.svg"
+  ]
+}
