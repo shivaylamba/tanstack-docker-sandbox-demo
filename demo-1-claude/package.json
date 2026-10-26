@@ -1,0 +1,32 @@
+{
+  "name": "node-playground",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Give an AI agent a Node.js environment: Claude Code in a Docker container through TanStack AI sandboxes, with host tools bridged over MCP.",
+  "type": "module",
+  "scripts": {
+    "build:image": "docker build -t node-playground:latest .",
+    "start": "tsx src/server.ts",
+    "start:codex": "HARNESS=codex tsx src/server.ts",
+    "start:local": "PROVIDER=local tsx src/server.ts",
+    "dev": "tsx watch src/server.ts",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@tanstack/ai": "1.0.0",
+    "@tanstack/ai-claude-code": "1.0.0",
+    "@tanstack/ai-codex": "1.0.0",
+    "@tanstack/ai-sandbox": "1.0.0",
+    "@tanstack/ai-sandbox-docker": "1.0.0",
+    "@tanstack/ai-sandbox-local-process": "1.0.0",
+    "tsx": "^4.23.15",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
